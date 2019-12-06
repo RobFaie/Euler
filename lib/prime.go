@@ -1,5 +1,7 @@
 package lib
 
+import "math/big"
+
 // IsPrime determines if a number is prime
 func IsPrime(n int) bool {
 	if n <= 3 {
@@ -20,7 +22,7 @@ func IsPrime(n int) bool {
 func GetNextPrime(x int) int {
 	for {
 		x++
-		if IsPrime(x) {
+		if big.NewInt(int64(x)).ProbablyPrime(0) {
 			return x
 		}
 	}
